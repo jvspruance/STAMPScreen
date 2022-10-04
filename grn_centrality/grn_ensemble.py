@@ -12,13 +12,16 @@ sns.set(rc={'figure.figsize':(12,8)})
 sns.set(style='whitegrid')
 
 def run_tf_search():
+    wd = '/home/users/jvs15/MachineLearningProstate'
+    #wd = '/Users/Jake/MachineLearningProstate'
+
     #Read in time-series RNA-seq data
     data_df = []
     names = []
-    for name in os.listdir('/Users/Jake/MachineLearningProstate/data/timeseries/'):
-        data_df.append(pd.read_csv(f'/Users/Jake/MachineLearningProstate/data/timeseries/{name}'))
+    for name in os.listdir(f'{wd}/data/timeseries/'):
+        data_df.append(pd.read_csv(f'{wd}/data/timeseries/{name}'))
         names.append(name)
-    tf_df = pd.read_csv('/Users/Jake/MachineLearningProstate/STAMPScreen/grn_centrality/Homo_sapiens_TF.csv')
+    tf_df = pd.read_csv(f'{wd}/STAMPScreen/grn_centrality/Homo_sapiens_TF.csv')
     #List of TFs
     tfs = set(tf_df['Symbol'].tolist())
     #Create transcription factor DF 
@@ -29,7 +32,7 @@ def run_tf_search():
         x = x.set_index('Gene')
         onlytfs_df.append(x)
 
-    os.chdir('/Users/Jake/MachineLearningProstate/STAMPScreen/grn_centrality')
+    os.chdir(f'{wd}/STAMPScreen/grn_centrality')
     prdf_tot = []
 
     # Average out most important transcription factors
@@ -40,7 +43,7 @@ def run_tf_search():
         ofile = []
         for i in range(len(onlytfs_df)):
             network.append(grnboost2(expression_data=onlytfs_df[i].T))
-            print(f"Finished traing {names[i]}")
+            print(f"Finished training {names[i]}")
             #Network file   
             ofile.append(f'trained_network_{names[i]}')
             network[i].to_csv(ofile[i])
@@ -49,7 +52,7 @@ def run_tf_search():
         #View Network
         network.clear()
         for i in range(len(ofile)):
-            network.append(pd.read_csv(f'/Users/Jake/MachineLearningProstate/STAMPScreen/grn_centrality/{ofile[i]}'))
+            network.append(pd.read_csv(f'{wd}/STAMPScreen/grn_centrality/{ofile[i]}'))
 
         '''
         #Visualize edge weight distribution
