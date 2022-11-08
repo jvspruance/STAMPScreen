@@ -1,0 +1,169 @@
+/var/lib/slurm-llnl/slurmd/job2709238/slurm_script: 2: /var/lib/slurm-llnl/slurmd/job2709238/slurm_script: module: not found
+'WARNING: infer_data failed for target ZNF33B' Retry (1/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (2/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (3/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (4/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (5/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (6/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (7/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (8/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (9/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (10/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (1/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (2/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (3/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (4/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (5/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (6/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (7/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (8/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (9/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (10/10). Failure caused by AssertionError().
+Finished training LNCaP_Clone07.csv
+Saved network file!
+'WARNING: infer_data failed for target ZNF33B' Retry (1/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (2/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (3/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (4/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (5/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (6/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (7/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (8/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (9/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (10/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (1/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (2/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (3/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (4/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (5/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (6/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (7/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (8/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (9/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (10/10). Failure caused by AssertionError().
+Finished training LNCaP_Clone10.csv
+Saved network file!
+'WARNING: infer_data failed for target ZNF33B' Retry (1/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (2/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (3/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (4/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (5/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (6/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (7/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (8/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (9/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (10/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (1/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (2/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (3/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (4/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (5/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (6/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (7/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (8/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (9/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (10/10). Failure caused by AssertionError().
+Finished training LNCaP_timeseries.csv
+Saved network file!
+'WARNING: infer_data failed for target ZNF33B' Retry (1/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (2/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (3/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (4/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (5/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (6/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (7/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (8/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (9/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (10/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (1/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (2/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (3/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (4/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (5/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (6/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (7/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (8/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (9/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (10/10). Failure caused by AssertionError().
+Finished training LNCaP_Clone03.csv
+Saved network file!
+'WARNING: infer_data failed for target ZNF33B' Retry (1/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (2/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (3/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (4/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (5/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (6/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (7/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (8/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (9/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (10/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (1/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (2/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (3/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (4/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (5/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (6/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (7/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (8/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (9/10). Failure caused by AssertionError().
+'WARNING: infer_data failed for target ZNF33B' Retry (10/10). Failure caused by AssertionError().
+/home/users/jvs15/MachineLearningProstate/STAMPScreen/grn_centrality/grn_ensemble.py:124: UserWarning: Matplotlib is currently using agg, which is a non-GUI backend, so cannot show the figure.
+  plt.show()
+/home/users/jvs15/MachineLearningProstate/STAMPScreen/grn_centrality/grn_ensemble.py:124: UserWarning: Matplotlib is currently using agg, which is a non-GUI backend, so cannot show the figure.
+  plt.show()
+/home/users/jvs15/MachineLearningProstate/STAMPScreen/grn_centrality/grn_ensemble.py:124: UserWarning: Matplotlib is currently using agg, which is a non-GUI backend, so cannot show the figure.
+  plt.show()
+/home/users/jvs15/MachineLearningProstate/STAMPScreen/grn_centrality/grn_ensemble.py:124: UserWarning: Matplotlib is currently using agg, which is a non-GUI backend, so cannot show the figure.
+  plt.show()
+/home/users/jvs15/MachineLearningProstate/STAMPScreen/grn_centrality/grn_ensemble.py:124: UserWarning: Matplotlib is currently using agg, which is a non-GUI backend, so cannot show the figure.
+  plt.show()
+Finished training LNCaP_Clone04.csv
+Saved network file!
+Loaded 16,948 genes with 419,434 edges.
+Loaded 16,948 genes with 419,334 edges.
+Loaded 16,947 genes with 1,594,498 edges.
+Loaded 16,942 genes with 419,632 edges.
+Loaded 16,942 genes with 419,124 edges.
+Removing all edges with weight < 1...
+
+Graph now has 16,948 genes and 212,302 edges.
+Graph now has 16,948 genes and 213,286 edges.
+Graph now has 16,947 genes and 363,999 edges.
+Graph now has 16,942 genes and 216,479 edges.
+Graph now has 16,942 genes and 211,349 edges.
+      Gene  PageRank
+0    MYBL1  0.000382
+1  KLHDC7B  0.000037
+2    TGIF2  0.000419
+3     HSF1  0.000419
+4      FOS  0.000438
+aggregate LNCaP_Clone07.csv added
+      Gene  PageRank
+0      MNT  0.000452
+1   MRPL17  0.000032
+2     EBF2  0.000433
+3  TAS2R15  0.000023
+4      CIC  0.000370
+aggregate LNCaP_Clone10.csv added
+      Gene  PageRank
+0    CSDE1  0.000419
+1     CTSL  0.000553
+2  ZNF512B  0.000417
+3   MT-ND6  0.000489
+4   ZNF677  0.000469
+aggregate LNCaP_timeseries.csv added
+           Gene  PageRank
+0        ZNF445  0.000408
+1          DGKD  0.000034
+2        ZNF524  0.000446
+3  RP11-384K6.6  0.000034
+4        ZNF596  0.000470
+aggregate LNCaP_Clone03.csv added
+        Gene  PageRank
+0  GTF2IRD2B  0.000413
+1      SEPT8  0.000021
+2       ALX4  0.000412
+3      DHCR7  0.000033
+4     NFATC1  0.000429
+aggregate LNCaP_Clone04.csv added
+Finished round 0

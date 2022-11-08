@@ -18,8 +18,11 @@ def run_tf_search():
     #Read in time-series RNA-seq data
     data_df = []
     names = []
+    tf_list = []
     for name in os.listdir(f'{wd}/data/timeseries/'):
-        data_df.append(pd.read_csv(f'{wd}/data/timeseries/{name}'))
+        # Read in csv from expression data and add to list
+        x = pd.read_csv(f'{wd}/data/timeseries/{name}')
+        data_df.append(x)
         names.append(name)
     tf_df = pd.read_csv(f'{wd}/STAMPScreen/grn_centrality/Homo_sapiens_TF.csv')
     #List of TFs
@@ -31,18 +34,22 @@ def run_tf_search():
         x = i[i['Gene'].isin(tfs)]
         x = x.set_index('Gene')
         onlytfs_df.append(x)
+        tf_list.append(list(x.index))
 
     os.chdir(f'{wd}/STAMPScreen/grn_centrality')
     prdf_tot = []
 
     # Average out most important transcription factors
 
-    for j in range(100):
+    for j in range(1):
         #Train network using GRNBoost2
         network = []
         ofile = []
         for i in range(len(onlytfs_df)):
             network.append(grnboost2(expression_data=onlytfs_df[i].T))
+            # x = data_df[i]
+            # x = x.set_index('Gene')
+            # network.append(grnboost2(expression_data=x.T, tf_names = tf_list[i]))
             print(f"Finished training {names[i]}")
             #Network file   
             ofile.append(f'trained_network_{names[i]}')
