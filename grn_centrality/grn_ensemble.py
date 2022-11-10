@@ -21,10 +21,10 @@ def run_tf_search():
     tf_list = []
     for name in os.listdir(f'{wd}/data/timeseries/'):
         # Read in csv from expression data and add to list
-        x = pd.read_csv(f'{wd}/data/timeseries/{name}')
-        data_df.append(x)
+        data_df.append(pd.read_csv(f'{wd}/data/timeseries/{name}'))
         names.append(name)
     tf_df = pd.read_csv(f'{wd}/STAMPScreen/grn_centrality/Homo_sapiens_TF.csv')
+
     #List of TFs
     tfs = set(tf_df['Symbol'].tolist())
     #Create transcription factor DF 
@@ -38,6 +38,15 @@ def run_tf_search():
 
     os.chdir(f'{wd}/STAMPScreen/grn_centrality')
     prdf_tot = []
+
+    ### Definitely needs edits--make dataframes all for one dose, not for individual
+    newtfdf = []
+    for i in range(len(data_df[0].columns)):
+        newtfdf.append(pd.concat([x.iloc[:, i] for x in data_df], axis=1))
+    doses = [x.split('_')[2] if (len(x.split('_')) > 2) else x.split('_')[1] for x in rows]
+
+
+
 
     # Average out most important transcription factors
 
@@ -61,36 +70,24 @@ def run_tf_search():
         for i in range(len(ofile)):
             network.append(pd.read_csv(f'{wd}/STAMPScreen/grn_centrality/{ofile[i]}'))
 
-        '''
-        #Visualize edge weight distribution
-        for i in range(len(network)):
-            f, axes = plt.subplots(2, 1)
-
-            sns.distplot(a=network[i]['importance'], norm_hist=True, ax=axes[0]).set(title= f'{names[i][0:len(names[i])-4]}')
-            sns.distplot(a=network[i]['importance'].apply(np.log), norm_hist=True, ax=axes[1]).set(title= f'{names[i][0:len(names[i])-4]}')
-
-            axes[0].set_xlabel('Connection weight')
-            axes[1].set_xlabel('Connection weight (log)')
-        '''
-
         #Create graph
-        G = [] 
-        for i in range(len(network)):
-            G.append(nx.from_pandas_edgelist(df=network[i], source='TF', target='target', edge_attr='importance'))
-            print('Loaded {:,} genes with {:,} edges.'.format(len(G[i].nodes), len(G[i].edges)))
+        G = make_graphs(network)
+        # for i in range(len(network)):
+        #     G.append(nx.from_pandas_edgelist(df=network[i], source='TF', target='target', edge_attr='importance'))
+        #     print('Loaded {:,} genes with {:,} edges.'.format(len(G[i].nodes), len(G[i].edges)))
 
         #Prune graph
 
         cutoff = 1
+        G = prune_graphs(G, cutoff)
+        # print('Removing all edges with weight < {}...\n'.format(cutoff))
 
-        print('Removing all edges with weight < {}...\n'.format(cutoff))
+        # for i in range(len(G)):
+        #     bad_edges = [(s,t,w) for (s,t,w) in G[i].edges.data('importance') if w < cutoff]
+        #     G[i].remove_edges_from(bad_edges)
+        #     print('Graph now has {:,} genes and {:,} edges.'.format(len(G[i].nodes), len(G[i].edges)))
 
-        for i in range(len(G)):
-            bad_edges = [(s,t,w) for (s,t,w) in G[i].edges.data('importance') if w < cutoff]
-            G[i].remove_edges_from(bad_edges)
-            print('Graph now has {:,} genes and {:,} edges.'.format(len(G[i].nodes), len(G[i].edges)))
-
-        # Run PageRank
+        # Run PageRank -- keep track of aggregated data in prdf_tot
         prdf = []
         for i in range(len(G)):
             pr = nx.pagerank(G[i], alpha=0.85, max_iter=50, weight='importance')
@@ -103,7 +100,7 @@ def run_tf_search():
                 prdf_tot[i] = pd.concat([prdf_tot[i], prdf[i]])\
                     .groupby('Gene')['PageRank'].sum().reset_index()
 
-        
+        # Store aggregated pagerank data 
         for i in range(len(prdf_tot)):
             prdf_tot[i].to_csv(f'aggregate_tfs_{names[i]}')
             print(prdf_tot[i].head())
@@ -124,6 +121,38 @@ def run_tf_search():
         data.to_csv(f'aggregate_{names[i][0:len(names[i])-4]}_pageranked_tfs.csv')
         plt.show()
 
+
+
+def make_graphs(networks):
+    """
+    networks: list of networks
+    returns a list of graphs
+    """
+    G = [] 
+    for i in range(len(networks)):
+        G.append(nx.from_pandas_edgelist(df=networks[i], source='TF', target='target', edge_attr='importance'))
+        print('Loaded {:,} genes with {:,} edges.'.format(len(G[i].nodes), len(G[i].edges)))
+    return G
+
+def prune_graphs(graphs, cutoff):
+    """
+    graphs: list of graphs
+    cutoff: int. Edge weights greater than cutoff are kept 
+    returns pruned graphs
+    """
+    print('Removing all edges with weight < {}...\n'.format(cutoff))
+
+    for i in range(len(graphs)):
+        bad_edges = [(s,t,w) for (s,t,w) in graphs[i].edges.data('importance') if w < cutoff]
+        graphs[i].remove_edges_from(bad_edges)
+        print('Graph now has {:,} genes and {:,} edges.'.format(len(graphs[i].nodes), len(graphs[i].edges)))
+    return graphs
+
+def run_pagerank(G):
+    """
+    G: list of graphs (ideally pruned)
+    returns list of pagerank dataframes
+    """
 
 
 
