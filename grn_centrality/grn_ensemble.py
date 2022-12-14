@@ -39,18 +39,83 @@ def run_tf_search():
     os.chdir(f'{wd}/STAMPScreen/grn_centrality')
     prdf_tot = []
 
-    ### Definitely needs edits--make dataframes all for one dose, not for individual
-    newtfdf = []
-    for i in range(len(data_df[0].columns)):
-        newtfdf.append(pd.concat([x.iloc[:, i] for x in data_df], axis=1))
+    '''
+    Lots of extra miscellaneous code starting here--need to make pretty/concise later.
+    Currently focused on getting some results and fast
+
+    NOTE: Also changing variable names for new way of organizing to existing variable names
+    in big for loop 
+    '''
+
+    # Merge all data into one df for UMAP
+    all_data = data_df[0]
+    for i in range(1, len(data_df)):
+        all_data = pd.merge(all_data, data_df[i], on = ['Gene'], how='inner')
+
+    # Remove rows containing genes with na values--should be none, but just in case
+    all_data = all_data.dropna()
+
+    # Take transpose of dataframe
+    all_data = all_data.T
+
+    # Make gene names into column names and remove from matrix
+    all_data.columns = all_data.iloc[0]
+    all_data = all_data.drop(['Gene'])
+    # Remove timeseries data from all_data
+    all_data = all_data.drop([x for x in list(all_data.index.values) if (len(x.split('_')) < 3)])
+
+    # Add factors to dataframe
+    rows = list(all_data.index)
+    rowtypes = [x.split('_')[1] if (len(x.split('_')) > 2) else 'timeseries' for x in rows]
     doses = [x.split('_')[2] if (len(x.split('_')) > 2) else x.split('_')[1] for x in rows]
+    all_data_umap = all_data.copy()
+    all_data_umap.insert(0, 'Sample Type', rowtypes, True)
+    all_data_umap.insert(1, 'Doses', doses, True)
 
+    doses = [x.split('_')[2] if (len(x.split('_')) > 2) else x.split('_')[1] for x in rows]
+    #samples = [x.split('_')[1] if (len(x.split('_')) > 2) else x.split('_')[1] for x in rows]
 
+    data_df = []
+    names = []
+    tflist = []
+    for dose in list(set(doses)):
+        x = all_data_umap.loc[all_data_umap['Doses']== dose].T
+        x = x.drop(['Sample Type', 'Doses'])
+        data_df.append(x)
+        names.append(f'pway_{dose}')
 
+    # # RESUME HERE--GET LIST OF TFS BASED ON DOSE INSTEAD OF INIVIDUAL
+    # onlytfs_df = []
+    # for i in data_df:
+    #     x = i[i.index.isin(tfs)]
+    #     x = x.drop(['ZNF33B']) # grnboost2 consistently fails to infer interactions for this gene; skews data, so deleting it
+    #     onlytfs_df.append(x)
+    #     tflist.append(list(x.index))
+
+    '''
+    pathway inserts that do the same thing as above start here
+    '''
+    mapk = pd.read_csv(f'{wd}/data/KEGG_mapk_signaling.csv')
+    fa = pd.read_csv(f'{wd}/data/KEGG_fa_metabolism.csv')
+    pway = set(mapk['Gene Name'].tolist())
+    for i in fa['Gene Name'].tolist():
+        pway.add(i)
+
+    # GET GENES IN PATHWAYS BASED ON DOSE
+    tflist = []
+    onlytfs_df = []
+    for i in data_df:
+        x = i[i.index.isin(pway)]
+        onlytfs_df.append(x)
+        tflist.append(list(x.index))
+
+    '''
+    End crappy code here
+    '''
 
     # Average out most important transcription factors
 
-    for j in range(1):
+    for j in range(500):
         #Train network using GRNBoost2
         network = []
         ofile = []
@@ -61,7 +126,7 @@ def run_tf_search():
             # network.append(grnboost2(expression_data=x.T, tf_names = tf_list[i]))
             print(f"Finished training {names[i]}")
             #Network file   
-            ofile.append(f'trained_network_{names[i]}')
+            ofile.append(f'trained_network_{names[i]}.csv')
             network[i].to_csv(ofile[i])
             print("Saved network file!")
 
@@ -102,7 +167,7 @@ def run_tf_search():
 
         # Store aggregated pagerank data 
         for i in range(len(prdf_tot)):
-            prdf_tot[i].to_csv(f'aggregate_tfs_{names[i]}')
+            prdf_tot[i].to_csv(f'aggregate_tfs_{names[i]}.csv')
             print(prdf_tot[i].head())
             print(f'aggregate {names[i]} added')
 
@@ -115,10 +180,10 @@ def run_tf_search():
             data=prdf_tot[i].sort_values('PageRank', ascending=False).head(45), 
             x='PageRank', 
             y='Gene'
-        ).set(title=f'{names[i][0:len(names[i])-4]} 100 iterations')
+        ).set(title=f'{names[i]} 100 iterations')
         data=prdf_tot[i].sort_values('PageRank', ascending=False)
         #Save ranked TFs
-        data.to_csv(f'aggregate_{names[i][0:len(names[i])-4]}_pageranked_tfs.csv')
+        data.to_csv(f'aggregate_{names[i]}_pageranked_tfs.csv')
         plt.show()
 
 
